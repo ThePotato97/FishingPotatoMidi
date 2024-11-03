@@ -2,7 +2,7 @@ extends Node
 class_name BarkEffect
 
 # Audio settings
-const LETTER_TO_SING = "abcdefghijklmnop"
+const LETTER_TO_SING = "aeiouaeiouaeiou"
 const MIDI_ORIGINAL_NOTE = 53  # C3
 # Exported properties
 export(float) var bark_pitch_multiplier = 1.0
