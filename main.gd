@@ -36,7 +36,8 @@ func _input(event):
 	if not event is InputEventMIDI:
 		return
 	
-	_guitar_strummer._input(event) 
+	if event.channel == 0:
+		 _guitar_strummer._input(event) 
 	_handle_midi_event(event)
 
 func _handle_midi_event(event):
@@ -48,5 +49,5 @@ func _handle_note_on(event):
 	if not is_instance_valid(player):
 		return
 		
-	if enable_bark_effects and _bark_effect:
-		_bark_effect.trigger_bark(player, event.pitch)
+	if enable_bark_effects and _bark_effect and event.channel >= 1:
+		_bark_effect.trigger_bark(player, event.pitch, event.channel)
